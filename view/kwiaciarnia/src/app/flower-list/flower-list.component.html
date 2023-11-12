@@ -1,0 +1,48 @@
+<h4>Lista kwiatów</h4>
+
+<div *ngIf="errorOccured" class="alert alert-danger">
+    Wystąpił błąd w pobieraniu!
+</div>
+
+<div class="col-5" style="margin-top:10px">
+    <h6>Wyszukaj po nazwie:</h6>
+    <input #input_text type="text" class="form-control" (keyup)="search(input_text.value)" />
+</div>
+
+<div *ngIf="deletedFlower" class="alert alert-danger">
+    Usunięto kwiat {{ deletedFlower }}
+</div> 
+
+<table class="table" style="width: 70%;">
+    <thead>
+        <tr>
+            <th class="th-lg">Id</th>
+            <th>Nazwa</th>
+            <th>Kolor</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let flower of flowers">
+            <td>{{flower.id}}</td>
+            <td [innerHTML]="flower.name | highlightSearched : input_text.value"></td>
+            <td [innerHTML]="flower.colour.colourName"></td>
+            <td>
+                <button (click)="editFlower(flower.id)" 
+                class="btn btn-warning">
+                    Edycja
+                </button>
+                |
+                <button (click)="deleteFlower(flower.id)" class="btn btn-danger">
+                    Usuń
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button (click)="addFlower()" class="btn btn-primary">
+    Dodaj
+</button>
+
+
+
