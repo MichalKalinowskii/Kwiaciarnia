@@ -8,22 +8,38 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
 import com.kwiat.kwiaciarnia.Models.Flower;
 
-@CrossOrigin(origins = "https://localhost:8081")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/flower")
 public class FlowerControler {
 
     @Autowired
-    FlowerInterface _flowerInterface;
+    FlowerInterface flowerinterface;
+
+    @PostMapping("/create")
+    public int CreateFlower(@RequestBody Flower flower){
+        return flowerinterface.CreateFlower(flower);
+    }
+
+    @PutMapping("/update/{id}")
+    public int UpdateFlower(@PathVariable("id") int id,@RequestBody Flower flower){
+        return flowerinterface.UpdateFlower(id, flower);
+    }
 
     @GetMapping("")
     public List<Flower> GetAllFlowers()
     {
-        return _flowerInterface.GetAllFlowers();
+        return flowerinterface.GetAllFlowers();
     }
 
     @GetMapping("/{name}")
     public List<Flower> GetFlowersByName(@PathVariable("name") String name){
-        return _flowerInterface.GetFlowersByName(name);
+        return flowerinterface.GetFlowersByName(name);
     }
+
+    @DeleteMapping("/delete/{id}")
+    public int DeleteFlower(@PathVariable("id") int id){
+        return flowerinterface.DeleteFlower(id);
+    }
+     
 }

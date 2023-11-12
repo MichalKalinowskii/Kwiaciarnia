@@ -14,6 +14,15 @@ public class Flower {
 
     }
 
+    public Flower(int id){
+        this.ID = id;
+    }
+
+    public Flower(Colour colour, String name){
+        this.colour = colour;
+        this.name = name;
+    }
+
     public Flower(int id, Colour colour, String name)
     {
         this.ID = id;

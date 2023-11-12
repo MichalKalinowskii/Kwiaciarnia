@@ -4,34 +4,42 @@ public class Colour
 {
     private int ID;
 
-    private String _colourName;
+    private String colourName;
 
     public Colour(){
 
     }
 
+    public Colour(int id){
+        this.ID = id;
+    }
+
+    public Colour(String colourName){
+        this.colourName = colourName;
+    }
+
     public Colour(int id,String colourName)
     {
         ID = id;
-        _colourName = colourName;
+        this.colourName = colourName;
     }
 
     public int getID()
     {
-        return ID;
+        return this.ID;
     }
 
     public String getColourName()
     {
-        return _colourName;
+        return this.colourName;
     }
 
     public void setID(int id){
-        ID = id;
+        this.ID = id;
     }
 
     public void setColourName(String colourName)
     {
-        _colourName = colourName;
+        this.colourName = colourName;
     }
 }
