@@ -20,7 +20,6 @@ export class FlowerListComponent implements OnInit{
   deletedFlower: string = "";
 
   ngOnInit(): void {
-    console.log('test');
     this.httpClient.getFlowers()
       .subscribe({  
         next: data => {
@@ -44,11 +43,11 @@ export class FlowerListComponent implements OnInit{
   }
 
   deleteFlower(id: number){
-
+    this.httpClient.deleteFlower(id);
   }
 
   addFlower(){
-    this.router.navigate(['add-flower/']);
+    this.router.navigate(['add-flower']);
   }
 
 }

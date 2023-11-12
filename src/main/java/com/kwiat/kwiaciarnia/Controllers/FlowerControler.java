@@ -23,7 +23,7 @@ public class FlowerControler {
 
     @PutMapping("/update/{id}")
     public int UpdateFlower(@PathVariable("id") int id,@RequestBody Flower flower){
-        return flowerinterface.UpdateFlower(id, flower);
+        return flowerinterface.UpdateFlower(flower);
     }
 
     @GetMapping("")
@@ -32,9 +32,9 @@ public class FlowerControler {
         return flowerinterface.GetAllFlowers();
     }
 
-    @GetMapping("/{name}")
-    public List<Flower> GetFlowersByName(@PathVariable("name") String name){
-        return flowerinterface.GetFlowersByName(name);
+    @GetMapping("/{id}")
+    public Flower GetFlowerByID(@PathVariable("id") int id){
+        return flowerinterface.GetFlowerByID(id);
     }
 
     @DeleteMapping("/delete/{id}")

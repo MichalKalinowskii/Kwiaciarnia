@@ -1,0 +1,18 @@
+<form #form="ngForm" (ngSubmit)="submit(form)">
+    <div>
+        <label class="form-label">Nazwa</label>
+        <input #name_input="ngModel" required [(ngModel)]="flower.name" name="name" class="form-control"
+            type="text" />
+    </div>
+
+    <div>
+        <label class="form-label">Kolor</label>
+        <select #colour_input="ngModel" required class="form-control" [(ngModel)]="flower.colour" name="colour">
+            <option [ngValue]="colour" *ngFor="let colour of colours">{{colour.colourName}}</option>
+        </select>
+    </div>
+
+    <div style="margin-top:10px">
+        <button class="btn btn-outline-success">Zapisz</button>
+    </div>
+</form>

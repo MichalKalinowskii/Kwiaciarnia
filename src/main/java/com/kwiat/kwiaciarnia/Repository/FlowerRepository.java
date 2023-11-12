@@ -23,23 +23,25 @@ public class FlowerRepository implements FlowerInterface
     }
 
     @Override
-    public int UpdateFlower(int id, Flower flower){
+    public int UpdateFlower(Flower flower){
         return jdbcTemplate.update("UPDATE Flower SET ColourID=?, Name=? WHERE id=?",
-                new Object[] {flower.getColour().getID(), flower.getName(), id});
+                new Object[] {flower.getColour().getID(), flower.getName(), flower.getID()});
     }
 
     @Override
     public List<Flower> GetAllFlowers() {
         List<Flower> res = jdbcTemplate.query(
-                "select f.ID f_id, f.Name f_name,c.ID c_id,c.ColourName c_colourName from Flower as f inner join Colour as c on f.ColourID = c.ID",
+                "SELECT f.ID f_id, f.Name f_name,c.ID c_id,c.ColourName c_colourName FROM Flower f INNER JOIN Colour c ON f.ColourID = c.ID",
                 new FlowerMapper(new ColourMapper()));
         return res;
     }
 
     @Override
-    public List<Flower> GetFlowersByName(String name){
-        String sql = "SELECT f.ID f_id, f.Name f_name,c.ID c_id,c.ColourName c_colourName FROM Flower f inner join Colour c on f.ColourID = c.ID WHERE Name LIKE '%" +name +"%'";
-        return jdbcTemplate.query(sql, new FlowerMapper(new ColourMapper()));
+    public Flower GetFlowerByID(int id){
+        var res = jdbcTemplate.queryForObject(
+                "SELECT f.ID f_id, f.Name f_name,c.ID c_id,c.ColourName c_colourName FROM Flower f INNER JOIN Colour c ON f.ColourID = c.ID WHERE f.ID=?",
+                new FlowerMapper(new ColourMapper()),id);
+        return (Flower)res;
     }
 
     @Override

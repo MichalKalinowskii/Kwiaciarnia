@@ -9,6 +9,9 @@ import { ColourListComponent } from './colour-list/colour-list.component';
 import { FormsModule } from '@angular/forms';
 import { HighlightSearchedPipe } from './highlight-searched-pipe.pipe';
 import { HttpClientModule } from '@angular/common/http';
+import { EditFlowerComponent } from './edit-flower/edit-flower.component';
+import { AddFlowerComponent } from './add-flower/add-flower.component';
+import { FormFlowerComponent } from './form-flower/form-flower.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +19,10 @@ import { HttpClientModule } from '@angular/common/http';
     NavigationComponent,
     FlowerListComponent,
     ColourListComponent,
-    HighlightSearchedPipe
+    HighlightSearchedPipe,
+    EditFlowerComponent,
+    AddFlowerComponent,
+    FormFlowerComponent
   ],
   imports: [
     BrowserModule,
