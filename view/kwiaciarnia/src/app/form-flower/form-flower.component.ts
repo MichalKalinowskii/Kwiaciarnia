@@ -11,7 +11,7 @@ import { HttpClientService } from '../http-client-service';
 })
 export class FormFlowerComponent implements OnInit{
 
-  @Input() flower: Flower = new Flower(1, "", new Colour(1,""));
+  @Input() flower: Flower = new Flower(0, "", new Colour(0,""));
   @Output() submitEvent = new EventEmitter<Flower>();
   colours: Colour[] = [];
   flowerColourName: string = "test";
@@ -28,13 +28,6 @@ export class FormFlowerComponent implements OnInit{
 
   constructor(private httpClient: HttpClientService){
 
-  }
-
-  getSelectedColourName(){
-    if(this.flower.name != ""){
-      return this.flower.colour.colourName
-    }
-    return this.colours[0].colourName;
   }
 
   submit(form: NgForm){

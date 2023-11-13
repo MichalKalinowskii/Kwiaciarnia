@@ -71,4 +71,31 @@ export class HttpClientService {
             this.router.navigate(['flower']);
         });
     }
+
+    getColourByID(id: number){
+        return this.httpClient.get<Colour>(`${this.url}/colour/${id}`)
+            .pipe(
+                map(data => 
+                    new Colour(data.id, data.colourName) 
+                )
+            );
+    }
+
+    putColour(colour: Colour){
+        this.httpClient.put<Colour>(`${this.url}/colour/update`, colour)
+        .subscribe(response => {
+            this.router.navigate(['colour']);
+        });
+    }
+
+    deleteColour(id: number){
+        return this.httpClient.delete(`${this.url}/colour/delete/${id}`);
+    }
+
+    createColour(colourName: string){
+        this.httpClient.post<Colour>(`${this.url}/colour/create/${colourName}`, null)
+        .subscribe(response => {
+            this.router.navigate(['colour']);
+        });
+    }
 }

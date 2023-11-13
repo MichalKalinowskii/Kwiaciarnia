@@ -11,13 +11,9 @@ import { HttpClientService } from '../http-client-service';
 })
 export class FlowerListComponent implements OnInit{
 
-  errorOccured: boolean = false;
-
   flowers: Flower[] = [];
 
   copyFlowers: Flower[] = [];
-
-  deletedFlower: string = "";
 
   ngOnInit(): void {
     this.httpClient.getFlowers()
@@ -26,7 +22,7 @@ export class FlowerListComponent implements OnInit{
           this.flowers = data;
           this.copyFlowers = data;
         }
-      })
+      });
   }
 
   constructor(private router: Router, private httpClient: HttpClientService){

@@ -8,6 +8,6 @@ public interface ColourInterface {
     int CreateColour(String colourName);
     int UpdateColour(Colour colour);
     List<Colour> GetAllColours();
-    Colour GetColourByName(String colourName);
+    Colour GetColourByID(int id);
     int DeleteColour(int id);
 }

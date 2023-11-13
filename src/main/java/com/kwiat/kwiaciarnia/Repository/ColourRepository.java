@@ -33,9 +33,9 @@ public class ColourRepository implements ColourInterface {
     }
 
     @Override
-    public Colour GetColourByName(String colourName){
-        String sql = "SELECT * FROM Colour WHERE ColourName LIKE '"+colourName+"'";
-        return jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Colour.class));
+    public Colour GetColourByID(int id){
+        String sql = "SELECT * FROM Colour WHERE ID=?";
+        return jdbcTemplate.queryForObject(sql, BeanPropertyRowMapper.newInstance(Colour.class), id);
     }
 
     @Override

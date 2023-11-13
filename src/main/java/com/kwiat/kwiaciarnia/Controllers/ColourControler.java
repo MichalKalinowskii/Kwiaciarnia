@@ -30,9 +30,9 @@ public class ColourControler {
         return colourInterface.GetAllColours();
     }
 
-    @GetMapping("/{colourName}")
-    public Colour GetColourByName(@PathVariable("colourName") String colourName){
-        return colourInterface.GetColourByName(colourName);
+    @GetMapping("/{id}")
+    public Colour GetColourByID(@PathVariable("id") int id){
+        return colourInterface.GetColourByID(id);
     }
 
     @DeleteMapping("delete/{id}")

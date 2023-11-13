@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Flower } from '../flower';
 import { Colour } from '../colour';
 import { HttpClientService } from '../http-client-service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-flower',
@@ -22,7 +22,7 @@ export class EditFlowerComponent implements OnInit{
     })
   }
 
-  constructor(private httpClient: HttpClientService, private activatedRoute: ActivatedRoute, private router: Router){
+  constructor(private httpClient: HttpClientService, private activatedRoute: ActivatedRoute){
   }
 
   editFlower(flower: Flower){

@@ -12,6 +12,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { EditFlowerComponent } from './edit-flower/edit-flower.component';
 import { AddFlowerComponent } from './add-flower/add-flower.component';
 import { FormFlowerComponent } from './form-flower/form-flower.component';
+import { AddColourComponent } from './add-colour/add-colour.component';
+import { EditColourComponent } from './edit-colour/edit-colour.component';
+import { FormColourComponent } from './form-colour/form-colour.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { FormFlowerComponent } from './form-flower/form-flower.component';
     HighlightSearchedPipe,
     EditFlowerComponent,
     AddFlowerComponent,
-    FormFlowerComponent
+    FormFlowerComponent,
+    AddColourComponent,
+    EditColourComponent,
+    FormColourComponent
   ],
   imports: [
     BrowserModule,

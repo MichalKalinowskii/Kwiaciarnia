@@ -1,1 +1,36 @@
-<p>colour-list works!</p>
+<h4>Lista kolorów</h4>
+
+<div class="col-5" style="margin-top:10px">
+    <h6>Wyszukaj po nazwie:</h6>
+    <input #input_text type="text" class="form-control" (keyup)="search(input_text.value)" />
+    <br>
+    <button (click)="addColour()" class="btn btn-primary">
+        Dodaj
+    </button>
+</div>
+
+<table class="table" style="width: 70%;">
+    <thead>
+        <tr>
+            <th class="th-lg">ID</th>
+            <th>Kolory</th>
+            <th>Akcje</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let colour of colours">
+            <td>{{colour.id}}</td>
+            <td [innerHTML]="colour.colourName| highlightSearched : input_text.value"></td>
+            <td>
+                <button (click)="editColour(colour.id)" 
+                class="btn btn-warning">
+                    Edycja
+                </button>
+                |
+                <button (click)="deleteColour(colour.id)" class="btn btn-danger">
+                    Usuń
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</table>

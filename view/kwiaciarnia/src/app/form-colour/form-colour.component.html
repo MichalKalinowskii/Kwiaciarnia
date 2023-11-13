@@ -1,0 +1,11 @@
+<form #form="ngForm" (ngSubmit)="submit(form)">
+    <div>
+        <label class="form-label">Kolor</label>
+        <input #colourName_input="ngModel" required [(ngModel)]="colour.colourName" name="colourName" class="form-control"
+            type="text" />
+    </div>
+
+    <div style="margin-top:10px">
+        <button class="btn btn-outline-success">Zapisz</button>
+    </div>
+</form>
