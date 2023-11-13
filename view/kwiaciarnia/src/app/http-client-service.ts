@@ -3,6 +3,7 @@ import { map } from "rxjs";
 import { Colour } from "./colour";
 import { Flower } from "./flower";
 import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,7 @@ export class HttpClientService {
     localFlowers: Flower[] = [];
     localColours: Colour[] = [];
 
-    constructor(private httpClient: HttpClient){
+    constructor(private httpClient: HttpClient, private router: Router){
 
     }
 
@@ -41,7 +42,7 @@ export class HttpClientService {
     }
 
     deleteFlower(id: number){
-        return this.httpClient.delete(`${this.url}/delete/${id}`)
+        return this.httpClient.delete(`${this.url}/flower/delete/${id}`);
     }
 
     getAllColours(){
@@ -55,5 +56,19 @@ export class HttpClientService {
             .pipe(map(colours => {
                 return[...colours, ...this.localColours]
             }))
+    }
+
+    putFlower(flower: Flower){
+        this.httpClient.put<Flower>(`${this.url}/flower/update`, flower)
+        .subscribe(response => {
+            this.router.navigate(['flower']);
+        });
+    }
+
+    createFlower(flower: Flower){
+        this.httpClient.post<Flower>(`${this.url}/flower/create`, flower)
+        .subscribe(response => {
+            this.router.navigate(['flower']);
+        });
     }
 }

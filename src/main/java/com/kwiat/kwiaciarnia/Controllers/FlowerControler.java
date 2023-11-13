@@ -21,8 +21,8 @@ public class FlowerControler {
         return flowerinterface.CreateFlower(flower);
     }
 
-    @PutMapping("/update/{id}")
-    public int UpdateFlower(@PathVariable("id") int id,@RequestBody Flower flower){
+    @PutMapping("/update")
+    public int UpdateFlower(@RequestBody Flower flower){
         return flowerinterface.UpdateFlower(flower);
     }
 

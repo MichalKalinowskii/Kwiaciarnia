@@ -43,7 +43,10 @@ export class FlowerListComponent implements OnInit{
   }
 
   deleteFlower(id: number){
-    this.httpClient.deleteFlower(id);
+    this.httpClient.deleteFlower(id).subscribe(data => {
+      this.flowers = this.flowers.filter(x => x.id != id);
+      this.copyFlowers = this.copyFlowers.filter(x => x.id != id);
+    });
   }
 
   addFlower(){

@@ -14,7 +14,7 @@ export class FormFlowerComponent implements OnInit{
   @Input() flower: Flower = new Flower(1, "", new Colour(1,""));
   @Output() submitEvent = new EventEmitter<Flower>();
   colours: Colour[] = [];
-  flowerColourName: string = "";
+  flowerColourName: string = "test";
 
   ngOnInit(): void {
     this.httpClient.getAllColours()
@@ -24,17 +24,23 @@ export class FormFlowerComponent implements OnInit{
       }
     })
     this.flowerColourName = this.flower.colour.colourName;
-    console.log(this.flowerColourName);
   }
 
   constructor(private httpClient: HttpClientService){
 
   }
 
+  getSelectedColourName(){
+    if(this.flower.name != ""){
+      return this.flower.colour.colourName
+    }
+    return this.colours[0].colourName;
+  }
+
   submit(form: NgForm){
-    console.log(this.flower);
-    console.log(this.flower.colour.colourName);
-    console.log(this.flower.colour.id)
+    if(form.invalid){
+      return;
+    }
     this.submitEvent.emit(this.flower);
   }
 }

@@ -7,6 +7,10 @@
 <div class="col-5" style="margin-top:10px">
     <h6>Wyszukaj po nazwie:</h6>
     <input #input_text type="text" class="form-control" (keyup)="search(input_text.value)" />
+    <br>
+    <button (click)="addFlower()" class="btn btn-primary">
+        Dodaj
+    </button>
 </div>
 
 <div *ngIf="deletedFlower" class="alert alert-danger">
@@ -40,9 +44,6 @@
         </tr>
     </tbody>
 </table>
-<button (click)="addFlower()" class="btn btn-primary">
-    Dodaj
-</button>
 
 
 
