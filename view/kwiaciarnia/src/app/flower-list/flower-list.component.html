@@ -21,7 +21,7 @@
     <tbody>
         <tr *ngFor="let flower of flowers">
             <td>{{flower.id}}</td>
-            <td [innerHTML]="flower.name | highlightSearched : input_text.value"></td>
+            <td [innerHTML]="flower.name | searchPipe : input_text.value"></td>
             <td [innerHTML]="flower.colour.colourName"></td>
             <td>
                 <button (click)="editFlower(flower.id)" 

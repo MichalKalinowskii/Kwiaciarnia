@@ -7,7 +7,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { FlowerListComponent } from './flower-list/flower-list.component';
 import { ColourListComponent } from './colour-list/colour-list.component';
 import { FormsModule } from '@angular/forms';
-import { HighlightSearchedPipe } from './highlight-searched-pipe.pipe';
+import { SearchedPipe } from './search-pipe.pipe';
 import { HttpClientModule } from '@angular/common/http';
 import { EditFlowerComponent } from './edit-flower/edit-flower.component';
 import { AddFlowerComponent } from './add-flower/add-flower.component';
@@ -22,7 +22,7 @@ import { FormColourComponent } from './form-colour/form-colour.component';
     NavigationComponent,
     FlowerListComponent,
     ColourListComponent,
-    HighlightSearchedPipe,
+    SearchedPipe,
     EditFlowerComponent,
     AddFlowerComponent,
     FormFlowerComponent,

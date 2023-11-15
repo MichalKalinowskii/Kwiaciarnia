@@ -20,7 +20,7 @@
     <tbody>
         <tr *ngFor="let colour of colours">
             <td>{{colour.id}}</td>
-            <td [innerHTML]="colour.colourName| highlightSearched : input_text.value"></td>
+            <td [innerHTML]="colour.colourName| searchPipe : input_text.value"></td>
             <td>
                 <button (click)="editColour(colour.id)" 
                 class="btn btn-warning">

@@ -36,7 +36,7 @@ export class ColourListComponent implements OnInit {
   }
 
   deleteColour(id: number){
-    this.httpClient.deleteFlower(id).subscribe(data => {
+    this.httpClient.deleteColour(id).subscribe(data => {
       this.colours = this.colours.filter(x => x.id != id);
       this.copyColours = this.copyColours.filter(x => x.id != id);
     });

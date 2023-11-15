@@ -35,7 +35,7 @@ public class ColourControler {
         return colourInterface.GetColourByID(id);
     }
 
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public int DeleteColour(@PathVariable("id") int id){
         return colourInterface.DeleteColour(id);
     }
