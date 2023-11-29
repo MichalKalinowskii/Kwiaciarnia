@@ -1,9 +1,18 @@
 package com.kwiat.kwiaciarnia.Models;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "Colour")
 public class Colour
 {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
 
+    @Column(name = "colourname")
     private String colourName;
 
     public Colour(){
@@ -20,7 +29,7 @@ public class Colour
 
     public Colour(int id,String colourName)
     {
-        ID = id;
+        this.ID = id;
         this.colourName = colourName;
     }
 
