@@ -1,25 +1,23 @@
 package com.kwiat.kwiaciarnia.Models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.List;
 
-@Entity
 @Table(name = "Flower")
 public class Flower {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "ColourID", nullable = false)
-    @OnDelete(action = OnDeleteAction.NO_ACTION)
+    @Transient
+    @JsonIgnore
     private Colour colour;
 
-    @Column(name = "Name")
+    @Column("Name")
     private String name;
 
     public Flower(){

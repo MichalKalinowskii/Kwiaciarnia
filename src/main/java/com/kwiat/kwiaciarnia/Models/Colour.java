@@ -1,18 +1,18 @@
 package com.kwiat.kwiaciarnia.Models;
-import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
 @Table(name = "Colour")
 public class Colour
 {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int ID;
 
-    @Column(name = "colourname")
+    @Column("colourname")
     private String colourName;
 
     public Colour(){

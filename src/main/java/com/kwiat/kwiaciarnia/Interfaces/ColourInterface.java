@@ -1,7 +1,7 @@
 package com.kwiat.kwiaciarnia.Interfaces;
 
 import com.kwiat.kwiaciarnia.Models.Colour;
-import org.springframework.data.jpa.repository.JpaRepository;
+
 
 import java.util.List;
 

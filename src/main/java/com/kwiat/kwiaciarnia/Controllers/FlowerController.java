@@ -1,7 +1,7 @@
 package com.kwiat.kwiaciarnia.Controllers;
 
-import com.kwiat.kwiaciarnia.Models.Colour;
-import com.kwiat.kwiaciarnia.Repository.ColourRepository;
+import com.kwiat.kwiaciarnia.Models.Flower;
+import com.kwiat.kwiaciarnia.Repository.FlowerRepository;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,36 +12,36 @@ import reactor.core.publisher.Mono;
 
 @CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/colour")
-@Tag(name = "Colour API")
-public class ColourController {
+@RequestMapping("/flower")
+@Tag(name = "Flower API")
+public class FlowerController {
 
     @Autowired
-    ColourRepository colourRepository;
+    FlowerRepository flowerRepository;
 
     @PostMapping("/create")
-    public Mono<ResponseEntity<Colour>> createColour(@RequestBody Colour colour) {
-        return colourRepository
-                .save(colour)
-                .map(col -> new ResponseEntity<>(col, HttpStatus.CREATED));
+    public Mono<ResponseEntity<Flower>> createFlower(@RequestBody Flower flower) {
+        return flowerRepository
+                .save(flower)
+                .map(flw -> new ResponseEntity<>(flw, HttpStatus.CREATED));
     }
 
     @GetMapping("")
-    public Flux<Colour> getAllColours() {
-        return colourRepository.findAll();
+    public Flux<Flower> getAllFlowers() {
+        return flowerRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Mono<ResponseEntity<Colour>> getColourById(@PathVariable int id) {
-        return colourRepository
+    public Mono<ResponseEntity<Flower>> getFlowerById(@PathVariable int id) {
+        return flowerRepository
                 .findById(id)
                 .map(ResponseEntity::ok)
                 .defaultIfEmpty(new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
     @DeleteMapping("/delete/{id}")
-    public Mono<ResponseEntity<Void>> deleteColour(@PathVariable int id) {
-        return colourRepository
+    public Mono<ResponseEntity<Void>> deleteFlower(@PathVariable int id) {
+        return flowerRepository
                 .deleteById(id)
                 .then(Mono.just(new ResponseEntity<>(HttpStatus.NO_CONTENT)));
     }

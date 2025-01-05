@@ -1,11 +1,12 @@
 package com.kwiat.kwiaciarnia.Repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import com.kwiat.kwiaciarnia.Models.Flower;
 import org.springframework.stereotype.Repository;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
+import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 
-import java.util.List;
-
-@Repository
-public interface FlowerRepository extends JpaRepository<Flower, Integer> {
+public interface FlowerRepository extends ReactiveCrudRepository<Flower, Integer> {
+    //Flux<Flower> findAll();                      // Wszystkie kwiaty
+    //Mono<Flower> findById(int id);
 }
